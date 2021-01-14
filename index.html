@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopify Challenge</title>
+	<link rel="stylesheet" type="text/css" href="shoppies_style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ </head>
+ <body>
+ 	<div class="left-body">
+ 		<h1>Movie Search</h1>
+	 	<form>
+	 		<input id="title" name="title" type="search" placeholder="Search movie title">
+			<button type="submit" class="searchButton"><i class="fa fa-search"></i></button>
+	 	</form>
+	 	<div id="resultsDiv" hidden>
+			<h2></h2>
+			<table class="pagination"><tr></tr></table>
+			<div class="listUI"></div>
+	 	</div>
+ 	</div>
+
+ 	<div class="nominations" hidden>
+ 		<div class="title-block">
+			<h1>Nominations</h1>
+			<img id="checkmark" src="https://www.freeiconspng.com/uploads/success-icon-10.png" style="display: none;">
+		</div>
+
+		<p class="countText"></p>
+		<div id="popup-banner" hidden>
+			<p>Max nominations reached!</p>
+			<img id="cancel" src="https://cdn0.iconfinder.com/data/icons/web/512/e52-128.png">
+		</div>
+		<div class="listUI">
+		</div>
+ 	</div>
+
+	<script type="text/javascript" src="shoppies_library.js"></script>
+ </body>
+</html>
