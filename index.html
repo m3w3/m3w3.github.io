@@ -9,6 +9,10 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
  </head>
  <body>
+ 	<div class="overlay" hidden>
+ 		<h2>Loading</h2>
+ 		<div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+ 	</div>
  	<div class="left-body">
  		<h1>Movie Search</h1>
 	 	<form>
@@ -25,18 +29,18 @@
  	<div class="nominations" hidden>
  		<div class="title-block">
 			<h1>Nominations</h1>
-			<img id="checkmark" src="https://www.freeiconspng.com/uploads/success-icon-10.png" style="display: none;">
+			<img id="checkmark" src="https://www.freeiconspng.com/uploads/success-icon-10.png" alt="Success" style="display: none;">
 		</div>
 
 		<p class="countText"></p>
 		<div id="popup-banner" hidden>
 			<p>Max nominations reached!</p>
-			<img id="cancel" src="https://cdn0.iconfinder.com/data/icons/web/512/e52-128.png">
+			<img id="cancel" src="https://cdn0.iconfinder.com/data/icons/web/512/e52-128.png" alt="Cancel">
 		</div>
 		<div class="listUI">
 		</div>
  	</div>
 
-	<script type="text/javascript" src="shoppies_library.js"></script>
+	<script src="shoppies_library.js"></script>
  </body>
 </html>
