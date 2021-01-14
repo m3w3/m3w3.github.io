@@ -4,7 +4,7 @@ const URL = 'https://www.omdbapi.com/?apikey=a23db7da&s=';
 const NO_IMAGE = 'https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg';
 const IMDB_URL = 'https://www.imdb.com/title/';
 const NOMINATION_LIMIT = 5;
-const MAX_PAGES = 20;
+const MAX_PAGES = Math.ceil(window.innerWidth / 90);
 let currSearchSize = 0;
 let responseList = []; // track response from page=1, 2, ... so on. Max of 200 movies.
 let nominatedMovies = new Set(); // track nominated movies, max = 5
@@ -19,11 +19,13 @@ $(function(){
 	// generate API results UI when user initiates search
 	$('form').on('submit', async function(e) {
 		event.preventDefault();
-		currSearchSize = 0;
+		document.querySelector('.overlay').style.display = 'block';
 		window.scrollTo(0, 0);
+		currSearchSize = 0;
 		await collectResult();
 		updateNominationCount();
 		[resultsDiv.style.display, nominationsDiv.style.display] = ['block', 'block'];
+		document.querySelector('.overlay').style.display = 'none';
 	});
 
 	$('#cancel').on('click', function(e) {
