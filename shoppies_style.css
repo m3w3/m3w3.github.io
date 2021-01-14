@@ -71,6 +71,10 @@ form {
 }
 
 /* the search results section */
+td[id=active] {
+	background-color: #79ede3;
+}
+
 td {
     border: 2px solid #80aaff;
     border-radius: 50%;
@@ -174,7 +178,6 @@ td {
 	left: 5%;
 	display: inline-block;
 	width: 30px;
-	transform: translate(0%, 10%);
 }
 
 .countText {
