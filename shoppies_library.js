@@ -1,19 +1,21 @@
-/* Library - JS */
 "use strict";
+// constants to change here
 const URL = 'https://www.omdbapi.com/?apikey=a23db7da&s=';
 const NO_IMAGE = 'https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg';
 const IMDB_URL = 'https://www.imdb.com/title/';
 const NOMINATION_LIMIT = 5;
 const MAX_PAGES = Math.ceil(window.innerWidth / 90);
-let currSearchSize = 0;
-let responseList = []; // track response from page=1, 2, ... so on. Max of 200 movies.
-let nominatedMovies = new Set(); // track nominated movies, max = 5
 
+// select the appropriate elements
 const searchForm = document.querySelector('form');
 const resultsDiv = document.querySelector('#resultsDiv');
 const resultTitleDiv = document.querySelector('#resultsDiv h2');
 const resultPages = document.querySelector('#resultsDiv table');
 const nominationsDiv = document.querySelector('.nominations');
+
+let currSearchSize = 0;
+let responseList = []; // track response from page=1, 2, ... so on
+let nominatedMovies = new Set(); // track nominated movies, max = NOMINATION_LIMIT
 
 $(function(){
 	// generate API results UI when user initiates search
@@ -32,9 +34,6 @@ $(function(){
 		event.preventDefault();
 		document.querySelector('#popup-banner').style.display = 'none';
 	});
-	// TODO: add a 'loading' screen when API is loading
-	// https://www.w3schools.com/howto/howto_css_loading_buttons.asp
-	// https://www.w3schools.com/howto/howto_css_loader.asp
 });
 
 async function collectResult() {
@@ -108,6 +107,12 @@ function displayPageNumber(totalPages) {
 }
 
 function generateResultsView() {
+	// highlight the selected button
+	let $existingPageSelection = $('td[id=active]');
+	if ($existingPageSelection[0] != undefined) {
+		$existingPageSelection.removeAttr('id'); // remove current highlight
+	}
+	$(this).attr('id', 'active');
 	// create the UI for all the movie results in this page number
 	let resultsCurrentPage = responseList[this.innerHTML - 1];
 	$('#resultsDiv .listUI').empty();
